@@ -249,12 +249,15 @@ h1, h2, h3, h4 {
 .nav.transparent .nav-links a.nav-active::after { background: rgba(255,255,255,.6); transform: scaleX(1); }
 
 .nav-cta {
-  padding: 10px 20px;
+  padding: 10px 20px !important;
   background: var(--red);
   color: #fff !important;
   border-radius: var(--r);
   font-weight: 600 !important;
   transition: background var(--tr) !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: var(--red-dark) !important; color: #fff !important; }
