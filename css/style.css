@@ -240,8 +240,13 @@ h1, h2, h3, h4 {
 .nav-links a:hover { color: var(--red); }
 .nav-links a:hover::after { transform: scaleX(1); }
 
+.nav-links a.nav-active { color: var(--red); }
+.nav-links a.nav-active::after { transform: scaleX(1); }
+
 .nav.transparent .nav-links a { color: rgba(255,255,255,.85); }
 .nav.transparent .nav-links a:hover { color: #fff; }
+.nav.transparent .nav-links a.nav-active { color: #fff; }
+.nav.transparent .nav-links a.nav-active::after { background: rgba(255,255,255,.6); transform: scaleX(1); }
 
 .nav-cta {
   padding: 10px 20px;
@@ -790,6 +795,21 @@ h1, h2, h3, h4 {
 .form-group select { cursor: pointer; }
 .form-group textarea { resize: vertical; min-height: 90px; }
 
+.form-group input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.5;
+  cursor: pointer;
+  filter: invert(0.4);
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.8;
+}
+
 .form-submit { width: 100%; justify-content: center; font-size: 1rem; padding: 16px; }
 
 .form-note {
@@ -1250,6 +1270,22 @@ h1, h2, h3, h4 {
   margin-top: 3rem;
   border-left: 3px solid var(--gray-d);
 }
+
+/* ============================================
+   PAGE TRANSITIONS
+   ============================================ */
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes page-out {
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+body { animation: page-in .35s ease both; }
+
+body.page-leaving { animation: page-out .25s ease forwards; }
 
 /* ============================================
    SCROLL ANIMATIONS

@@ -43,6 +43,34 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+// ---- Scroll-spy: highlight active nav link ----
+const spyLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+const spySections = spyLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+if (spySections.length) {
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        spyLinks.forEach(a => a.classList.remove('nav-active'));
+        const active = spyLinks.find(a => a.getAttribute('href') === `#${e.target.id}`);
+        active?.classList.add('nav-active');
+      }
+    });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  spySections.forEach(s => spyObserver.observe(s));
+}
+
+// ---- Page transitions ----
+document.querySelectorAll('a[href]').forEach(a => {
+  const href = a.getAttribute('href');
+  if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || /^https?:/.test(href)) return;
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.body.classList.add('page-leaving');
+    setTimeout(() => { window.location.href = href; }, 260);
+  });
+});
+
 // ---- Menu tabs (speisekarte.html) ----
 const tabBtns  = document.querySelectorAll('.tab-btn');
 const panels   = document.querySelectorAll('.menu-panel');
