@@ -1055,6 +1055,50 @@ h1, h2, h3, h4 {
 .ft-bottom-links a:hover { color: rgba(255,255,255,.75); }
 
 /* ============================================
+   LEGAL PAGES (Impressum / Datenschutz)
+   ============================================ */
+.legal-page {
+  padding: calc(var(--nav-h) + 64px) 0 96px;
+}
+
+.legal-wrap {
+  max-width: 720px;
+}
+
+.legal-block {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--gray-m);
+}
+
+.legal-block:first-of-type {
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+.legal-block h2 {
+  font-family: var(--font-b);
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--red);
+  margin-bottom: .9rem;
+}
+
+.legal-block p {
+  font-size: .95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: .75rem;
+}
+
+.legal-block p:last-child { margin-bottom: 0; }
+
+.legal-block a { color: var(--red); }
+.legal-block a:hover { text-decoration: underline; }
+
+/* ============================================
    SPEISEKARTE PAGE
    ============================================ */
 .menu-hero {
